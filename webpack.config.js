@@ -1,6 +1,9 @@
 
 // webpack 配置文件，这里是js模块
 
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
     entry: __dirname + "/source/main.js",   // 入口文件
     output: {                               // 输出文件
@@ -43,15 +46,28 @@ module.exports = {
                 test: /\.css$/,
 
                 // 同一个文件规则，使用多个loader
-                use: [
-                    {
-                        loader: "style-loader"
-                    }, 
-                    {
-                        loader: "css-loader"
-                    },             
-                ]
+                // use: [
+                //     {
+                //         loader: "style-loader"
+                //     }, 
+                //     {
+                //         loader: "css-loader",
+                //         options: {
+                //             modules: true,   // 启用css modules
+                //             localIdentName: "[name]__[local]--[hash:base64:5]" // 指定class命名规则
+                //         }
+                //     },             
+                // ]
+
+                // 更简洁的方式同时配置style-loader、css-loader、css modules
+                loader: "style-loader!css-loader?modules!postcss-loader"
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.BannerPlugin('版权所有，翻版必究'),      // 指定banner信息
+        new HtmlWebpackPlugin({
+            template: __dirname + "/source/index.html"// 指定html模版文件
+        })
+    ],
 };

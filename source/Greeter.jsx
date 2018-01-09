@@ -10,13 +10,18 @@
 // ES6的语法
 import React, { Component } from 'react';
 import config from './config.json';
-import './text.css';
+
+// import './text.css';
+
+// 启用css modules之后可以用这种语法
+import styles from './text.css';
 
 class Greeter extends Component {
     render() {
         return (
-            <div className='txt'>
-                { config.greetText }
+            <div className={ styles.txt }>
+                <p>Hello World!!!!</p>
+                <h1>啦啦啦🦋🦋🦋</h1>
             </div>
         );        
     }
