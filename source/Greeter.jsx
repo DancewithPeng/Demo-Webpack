@@ -22,6 +22,8 @@ class Greeter extends Component {
             <div className={ styles.txt }>
                 <p>Hello World!!!!</p>
                 <h1>啦啦啦🦋🦋🦋</h1>
+                <h3>哈哈哈哈哈哈哈</h3>
+                <h5>哦哦哦哦</h5>
             </div>
         );        
     }
